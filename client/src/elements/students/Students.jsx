@@ -7,6 +7,7 @@ import './students.css';
 const Students = () => {
     const [data, setData] = useState([]);
     const [deleted, setDeleted] = useState(true);
+    const [studentStats, setStudentsStats] = useState([]);
 
     useEffect(() => {
         if (deleted) {
@@ -30,6 +31,9 @@ const Students = () => {
             <h2 className="students-title">Students</h2>
             <div className="d-flex justify-content-end add-student">
                 <Link className="btn btn-success" to="/create">Add Student</Link>
+            </div>
+            <div>
+                {/* add dashboard #students #active students %active students */}
             </div>
             <table className="students-table">
                 <thead>
@@ -64,6 +68,7 @@ const Students = () => {
                     }
                 </tbody>
             </table>
+            
         </div>
     )
 }
