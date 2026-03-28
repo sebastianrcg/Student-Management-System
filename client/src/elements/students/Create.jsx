@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
+import './create.css';
 
 
 function Create() {
@@ -25,7 +26,7 @@ function Create() {
     function handleSubmit(event){
         event.preventDefault();
 
-        axios.post('/add_user', values).then((res)=> {
+        axios.post('/students', values).then((res)=> {
             
             navigate('/');
             console.log(res);
@@ -34,28 +35,32 @@ function Create() {
     }
 
     return(
-        <div className="container bg-primary vh-100 vw-100">
-            <div className="row"> 
-                <h3>Add Student</h3>
+        <div className="container-fluid dvw-100 bg-primary vh-100 content">
+            <div> 
+                <h2 className="section-title">Add Student</h2>
                 <div className="d-flex justify-content-end"> 
-                    <Link to="/" className="btn btn-success">Home</Link>
+                    <Link to="/" className="btn btn-success btn-students">Students</Link>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form className="create-form" onSubmit={handleSubmit}>
                     <div className="form-group my-3">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">Name: </label>
                         <input type="text" name="name" value={values.name} onChange={handleChange}/>
                     </div>
                     <div className="form-group my-3">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email: </label>
                         <input type="text" name="email" value={values.email} onChange={handleChange}/>
                     </div>
                     <div className="form-group my-3">
-                        <label htmlFor="age">Age</label>
+                        <label htmlFor="age">Age: </label>
                         <input type="number" name="age" value={values.age} onChange={handleChange}/>
                     </div>
                     <div className="form-group my-3">
-                        <label htmlFor="gender">Gender</label>
-                        <input type="text" name="gender" value={values.gender} onChange={handleChange}/>
+                        <label htmlFor="gender">Gender: </label>
+                        
+                        <select name="gender" value={values.gender} onChange={handleChange}>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
                     </div>
                     <div className="form-group my-3">
                         <button type="submit" className="btn btn-success">Save</button>
