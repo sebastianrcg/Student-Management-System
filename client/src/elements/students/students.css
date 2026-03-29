@@ -10,6 +10,39 @@
     
 }
 
+.dashboard {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    height: 150px;
+    background-color:#6c757d;
+    padding: 30px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-box{
+    border: 2px solid #51585e;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ced4da;
+
+}
+
+.dashboard-box h3 {
+    font-size: 25px;
+}
+
+.dashboard strong {
+    font-size: 30px;
+}
+
 .students-table {
     margin-top: 20px;
     background-color: #f8f9fa;
@@ -39,6 +72,14 @@
 
 .students-table th:last-child {
     border-top-right-radius: 20px;
+}
+
+.no-data th:first-child{
+    border-bottom-left-radius: 20px;
+}
+
+.no-data th:last-child {
+    border-bottom-right-radius: 20px;
 }
 
 .students-table tr:last-child td:first-child {

@@ -7,7 +7,13 @@ import './students.css';
 const Students = () => {
     const [data, setData] = useState([]);
     const [deleted, setDeleted] = useState(true);
-    const [studentStats, setStudentsStats] = useState([]);
+    const [studentStats, setStudentsStats] = useState({
+        total: 0,
+        active: 0,
+        activePercentage: 0
+    });
+
+    const tableHeaderStyles = data.length === 0 ?  "no-data"   :  "";  
 
     useEffect(() => {
         if (deleted) {
@@ -15,7 +21,8 @@ const Students = () => {
 
             axios.get('/students')
                 .then((res) => {
-                    setData(res.data);
+                    setData(res.data.students);
+                    setStudentsStats(res.data.stats)
                 }).catch((err) => console.log(err))
         }
     }, [deleted])
@@ -32,11 +39,23 @@ const Students = () => {
             <div className="d-flex justify-content-end add-student">
                 <Link className="btn btn-success" to="/create">Add Student</Link>
             </div>
-            <div>
+            <div className="dashboard">
                 {/* add dashboard #students #active students %active students */}
+                <div className="dashboard-box">
+                    <h3>Total Students</h3>
+                    <strong>{studentStats.total}</strong>
+                </div>
+                <div className="dashboard-box">
+                    <h3>Active Students</h3>
+                    <strong>{studentStats.active}</strong>
+                </div>
+                <div className="dashboard-box">
+                    <h3>% of Active Students</h3>
+                    <strong>{studentStats.activePercentage}%</strong>
+                </div>
             </div>
             <table className="students-table">
-                <thead>
+                <thead className={tableHeaderStyles}>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
