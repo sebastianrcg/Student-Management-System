@@ -11,7 +11,7 @@ function ReadCourse(){
     useEffect(()=>{
         axios.get(`/courses/${id}`)
         .then((res)=>{
-            setData(res.data);
+            setData([res.data]);
         }).catch((err)=> console.log(err))
     }, [id])
     return(
@@ -41,6 +41,10 @@ function ReadCourse(){
                             <li className="list-group-item">
                                 <b>Schedule: </b>
                                 {course["schedule"]}
+                            </li>
+                            <li className="list-group-item">
+                                <b>Days: </b>
+                                {(course["days"].length > 0) ? course["days"].join(", ") : "No days selected"}
                             </li>
                         </ul>
                     )

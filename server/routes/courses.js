@@ -47,10 +47,11 @@ coursesRouter.put('/:id', (req, res)=>{
         req.body.name,
         req.body.department,
         req.body.professor,
-        req.body.schedule
+        req.body.schedule,
+        req.body.days
 
     ]
-    const sql = `UPDATE courses set name=$1, department=$2, professor=$3, schedule=$4 where id=${id}`;
+    const sql = `UPDATE courses set name=$1, department=$2, professor=$3, schedule=$4, days=$5 where id=${id}`;
     pool.query(sql, values, (error, results)=>{
         if (error) res.json({message: "Something went wrong"});
         return res.json({success: "Course Updated"});
