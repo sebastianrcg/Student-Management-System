@@ -84,7 +84,7 @@ const CreateCourse = () => {
                                         <label htmlFor={`form-${day}`}>
                                             {day}
                                         </label>
-                                        <input type="checkbox" id={`form-${day}`} value={day} checked={values.days.includes(day)} onChange={handleDayschange}/>
+                                        <input type="checkbox" id={`form-${day}`} value={day} checked={values.days.includes(day)} onChange={handleDaysChange}/>
                                     </div>
                                 )
                             })
