@@ -8,6 +8,8 @@ const Courses = () => {
     const [data, setData] = useState([]);
     const [deleted, setDeleted] = useState(true);
 
+    const tableHeaderStyles = (data.length === 0) ? "no-data" : "";
+
     useEffect(() => {
         if (deleted) {
             setDeleted(false)
@@ -32,7 +34,7 @@ const Courses = () => {
                 <Link className="btn btn-success" to="/createCourse">Add Course</Link>
             </div>
             <table className="students-table">
-                <thead>
+                <thead className={tableHeaderStyles}>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
