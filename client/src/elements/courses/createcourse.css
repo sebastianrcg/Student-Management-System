@@ -25,3 +25,14 @@
 .btn-students{
     margin-right: 40px;
 }
+
+.form-days {
+    display: flex;
+    
+}
+
+.form-days-checks {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
