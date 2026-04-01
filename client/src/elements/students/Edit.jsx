@@ -65,6 +65,7 @@ const Edit = () => {
                                 <label htmlFor="gender">Gender: </label>
                                 
                                 <select name="gender" value={data[0]["gender"]} onChange={handleChange} >
+                                    <option value=""></option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
