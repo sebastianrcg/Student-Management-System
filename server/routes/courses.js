@@ -5,13 +5,14 @@ const express = require('express');
 const coursesRouter = express.Router();
 
 coursesRouter.post('/', (req, res)=> {
-    const sql = "INSERT INTO courses (name, department, professor, schedule) VALUES ($1, $2, $3, $4) RETURNING *";
+    const sql = "INSERT INTO courses (name, department, professor, schedule, days) VALUES ($1, $2, $3, $4, $5) RETURNING *";
     
     const values = [
         req.body.name,
         req.body.department,
         req.body.professor,
-        req.body.schedule
+        req.body.schedule,
+        req.body.days
     ];
 
     pool.query(sql, values, (error, results)=>{
