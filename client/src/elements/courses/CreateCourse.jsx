@@ -26,6 +26,18 @@ const CreateCourse = () => {
         ))
     }
 
+    const handleDaysChange = (event) =>{
+        const {value, checked} = event.target;
+        setValues(prev => {
+            if (checked) {
+                return {...prev, days : [prev.days, value]}; 
+            } else {
+                return {...prev, days : prev.days.filter(day=> day !== value)};
+            }
+        })
+
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -72,7 +84,7 @@ const CreateCourse = () => {
                                         <label htmlFor={`form-${day}`}>
                                             {day}
                                         </label>
-                                        <input type="checkbox" id={`form-${day}`} value={day} checked={values.days.includes(day)} />
+                                        <input type="checkbox" id={`form-${day}`} value={day} checked={values.days.includes(day)} onChange={handleDayschange}/>
                                     </div>
                                 )
                             })
