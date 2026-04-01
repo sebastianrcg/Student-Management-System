@@ -34,7 +34,7 @@ coursesRouter.get('/:id', async (req, res)=>{
     const sql = `SELECT * FROM courses WHERE id=$1`;
     const results = await pool.query(sql, [id]);
 
-    const days = results.rows[0].days.split(", ");
+    const days = results.rows[0].days ? results.rows[0].days.split(", "): [];
     const updatedResults = {
         ...results.rows[0], days: days
     }

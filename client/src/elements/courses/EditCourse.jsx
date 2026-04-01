@@ -8,6 +8,8 @@ const EditCourse = () => {
     const [data, setData] = useState([]);
     const { id } = useParams();
 
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
 
     const navigate = useNavigate();
 
