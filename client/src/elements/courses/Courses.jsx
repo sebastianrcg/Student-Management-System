@@ -41,6 +41,7 @@ const Courses = () => {
                         <th>Department</th>
                         <th>Professor</th>
                         <th>Schedule</th>
+                        <th>Days</th>
                         <th>Actions</th>
                         
                     </tr>
@@ -54,6 +55,7 @@ const Courses = () => {
                                 <td>{course.department}</td>
                                 <td>{course.professor}</td>
                                 <td>{course.schedule}</td>
+                                <td>{course.days}</td>
                                 <td className="actions">
                                     <Link className="btn mx-2 btn-success" to={`/readCourse/${course.id}`}>Read</Link>
                                     <Link className="btn mx-2 btn-secondary" to={`/editCourse/${course.id}`}>Edit</Link>

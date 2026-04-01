@@ -3,5 +3,6 @@ CREATE TABLE courses (
     name varchar(50),
     department varchar(50),
     professor varchar(50),
-    schedule varchar(50)
+    schedule varchar(50),
+    days varchar(100)
 );

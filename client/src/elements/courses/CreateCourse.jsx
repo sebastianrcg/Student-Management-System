@@ -30,7 +30,7 @@ const CreateCourse = () => {
         const {value, checked} = event.target;
         setValues(prev => {
             if (checked) {
-                return {...prev, days : [prev.days, value]}; 
+                return {...prev, days : [...prev.days, value]}; 
             } else {
                 return {...prev, days : prev.days.filter(day=> day !== value)};
             }
@@ -40,8 +40,12 @@ const CreateCourse = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        const mergedDays = values.days.join(", ");
+        const updatedValues = {
+            ...values, days: mergedDays
+        }
 
-        axios.post('/courses', values).then((res) => {
+        axios.post('/courses', updatedValues).then((res) => {
 
             navigate('/courses');
             console.log(res);
@@ -84,12 +88,13 @@ const CreateCourse = () => {
                                         <label htmlFor={`form-${day}`}>
                                             {day}
                                         </label>
-                                        <input type="checkbox" id={`form-${day}`} value={day} checked={values.days.includes(day)} onChange={handleDaysChange}/>
+                                        <input type="checkbox" id={`form-${day}`} value={day} checked={values.days.includes(day)} name={day} onChange={handleDaysChange}/>
                                     </div>
                                 )
                             })
                         }
                     </div>
+                    <p>{values.days}</p>
                     <div className="form-group my-3">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
