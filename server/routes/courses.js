@@ -29,13 +29,16 @@ coursesRouter.get('/', (req, res)=>{
     })
 })
 
-coursesRouter.get('/:id', (req, res)=>{
+coursesRouter.get('/:id', async (req, res)=>{
     const id = req.params.id;
     const sql = `SELECT * FROM courses WHERE id=$1`;
-    pool.query(sql, [id] , (error, results)=>{
-        if (error) res.json({message: "Something went wrong"});
-        return res.json(results.rows);
-    })
+    const results = await pool.query(sql, [id]);
+
+    const days = results.rows[0].days.split(", ");
+    const updatedResults = {
+        ...results.rows[0], days: days
+    }
+    res.json(updatedResults);
 })
 
 coursesRouter.put('/:id', (req, res)=>{

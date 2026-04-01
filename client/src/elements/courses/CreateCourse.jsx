@@ -94,7 +94,6 @@ const CreateCourse = () => {
                             })
                         }
                     </div>
-                    <p>{values.days}</p>
                     <div className="form-group my-3">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
