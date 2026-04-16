@@ -101,7 +101,7 @@ const EditCourse = () => {
                                     })
                                 }
                             </div>
-                            <p>{data[0].days}</p>
+                            
 
                             <div className="form-group my-3">
                                 <button type="submit" className="btn btn-success">Save</button>

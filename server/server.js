@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const pool = require('./model/database')
+
 const path = require('path');
 const morgan = require('morgan');
 const studentsRouter = require('./routes/students')
