@@ -18,6 +18,30 @@ const port = 5000;
 app.use('/students' ,studentsRouter);
 app.use('/courses', coursesRouter);
 
+app.post('/login' , (req, res)=> {
+    const user = {
+        userEmail: "sebalox92@gmail.com",
+        userPass: "sebas92",
+        username: "Sebalox"
+    }
+    
+    const {email, password} = req.body;
+
+    if (email === user.userEmail && password === user.userPass){
+        return res.json({
+            validated: true,
+            username: user.username
+        })
+    } else {
+        return res.json({
+            validated: false
+        })
+         
+    }
+
+
+});
+
 
 app.listen(port, ()=> {
     console.log(`Server listening on Port: ${port}`);

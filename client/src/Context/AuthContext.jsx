@@ -14,7 +14,7 @@ export const AuthProvider = ({children}) =>{
     }
 
     return (
-        <AuthContext value={{session}}>
+        <AuthContext value={{session, setSession, signOut}}>
             {children}
         </AuthContext>
     )

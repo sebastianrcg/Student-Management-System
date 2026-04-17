@@ -30,6 +30,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path="readCourse/:id" element={<ReadCourse />} />
         <Route path="create" element={<Create />} />
         <Route path="createCourse" element={<CreateCourse />} />
+        <Route path="*" element={<h1> 404 Page Not Found </h1>}/>
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Route>
     </Route>

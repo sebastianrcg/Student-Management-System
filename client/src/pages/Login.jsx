@@ -1,14 +1,17 @@
 import { useState } from "react"
 import classes from './login.module.css';
-import { useNavigation } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../Context/AuthContext";
 
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [fail, setFail] = useState(null);
 
-    const navigate = useNavigation();
+    const {setSession} = useAuth();
+    const navigate = useNavigate();
 
     const emailChange = (e) => {
         setEmail(e.target.value);
@@ -18,17 +21,37 @@ const Login = () => {
         setPassword(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setFail(null);
+        setEmail("");
+        setPassword("")
+        const response = await axios.post('/login', {email, password});
+
+        if (!response.data.validated){
+            setFail("Wrong email or password.");
+        } else if ( response.data.validated){
+            setSession({
+                username: response.data.username
+            });
+            navigate('/');
+
+        } else {
+            setFail("Something went wrong, please try again.")
+        }
     } 
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="email" placeholder="Email" value={email} onChange={emailChange}/>
-                <input type="password" placeholder="Password" value={password} onChange={passwordChange}/>
-                <button type="submit">Login</button>
+        <div className={classes.page}>
+            <form onSubmit={handleSubmit} className={classes.login}>
+                <h2>Login</h2>
+                <input type="email" placeholder="Email" value={email} onChange={emailChange} required/>
+                <input type="password" placeholder="Password" value={password} onChange={passwordChange} required/>
+                {fail && <p className={classes.fail}>{fail}</p>}
+                <button type="submit" >Login</button>
             </form>
         </div>
     )
