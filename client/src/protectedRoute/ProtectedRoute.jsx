@@ -3,7 +3,9 @@ import { useAuth } from "../Context/AuthContext";
 
 
 const ProtectedRoute =()=>{
-    const {session} = useAuth();
+    const {session , loading} = useAuth();
+
+    if (loading) return <div></div>
 
     if (!session) return <Navigate to='/login' />;
 

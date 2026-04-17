@@ -61,6 +61,8 @@ app.post('/login' , (req, res)=> {
             validated: false
         })
     } else if (result.userPass === password) {
+
+        req.session.user = result.username;
         return res.json({
             validated: true,
             username: result.username
@@ -71,9 +73,23 @@ app.post('/login' , (req, res)=> {
         })
     }
 
-
-
 });
+
+app.get('/session', (req, res)=>{
+        if (req.session.user){
+            res.json({username: req.session.user});
+        } else {
+            res.status(401).json({username: null})
+        }
+    })
+
+app.post('/logout', (req, res)=>{
+    req.session.destroy(() => {
+    res.clearCookie('connect.sid');
+    res.json({ message: 'Logged out' });
+  });
+})
+
 
 
 app.listen(port, ()=> {
