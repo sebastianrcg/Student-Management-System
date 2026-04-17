@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../../axiosConfig";
 import "./editcourse.css";
 
 const EditCourse = () => {

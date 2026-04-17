@@ -12,8 +12,9 @@ import ReadCourse from "./Components/courses/ReadCourse";
 import EditCourse from "./Components/courses/EditCourse";
 import CreateCourse from './Components/courses/CreateCourse';
 import { AuthProvider } from "./Context/AuthContext";
-import Login from "./pages/Login";
+import Login from "./pages/login/Login";
 import ProtectedRoute from "./protectedRoute/ProtectedRoute";
+import NotFound from "./pages/NotFound/NotFound";
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -30,7 +31,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path="readCourse/:id" element={<ReadCourse />} />
         <Route path="create" element={<Create />} />
         <Route path="createCourse" element={<CreateCourse />} />
-        <Route path="*" element={<h1> 404 Page Not Found </h1>}/>
+        <Route path="*" element={<NotFound />}/>
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Route>
     </Route>
